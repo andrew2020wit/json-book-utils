@@ -7,7 +7,7 @@ const dirContent = fs.readdirSync(scriptParamsConst.epubFolder);
 
 exportToTranslationForJsonBook();
 
-export function exportToTranslationForJsonBook(): void {
+function exportToTranslationForJsonBook(): void {
     const fileName = dirContent
         .filter(name => name.includes('.book.json'))?.[0];
 

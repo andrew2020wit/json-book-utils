@@ -6,12 +6,12 @@ import {convert} from "html-to-text";
 import {textSplitSeparators} from "../const/text-split-separators.const.ts";
 import {scriptParamsConst} from "../params/script-params.const.js";
 
-const dirContent = fs.readdirSync(scriptParamsConst.epubFolder);
+const files = fs.readdirSync(scriptParamsConst.epubFolder);
 
 await convertEpubFilesToJsonFile();
 
 async function convertEpubFilesToJsonFile() {
-    const fileName = dirContent
+    const fileName = files
         .filter(name => name.slice(-5) === '.epub')?.[0];
 
     if (!fileName) {
@@ -22,7 +22,7 @@ async function convertEpubFilesToJsonFile() {
 }
 
 async function convertEpubFileToJsonFile(fileName: string) {
-    const fileNameWithoutExtension = fileName.slice(0, -1 * '.json'.length);
+    const fileNameWithoutExtension = fileName.slice(0, -1 * '.epub'.length);
 
     const epub = new EPub(scriptParamsConst.epubFolder + '/' + fileName);
 

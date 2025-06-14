@@ -14,12 +14,19 @@ see 'src/params/'
 
 ## scripts
 
-epub-to-json - convert an epub file to a json file.
+Each script can use param file from 'src/params/'
 
-export-to-translation - create a translation file for the next translation.
+Each script take only one file with certain extension (the first one);
 
-translate-json-book-via-net - it use Bing to translate
+1. epub-to-json - convert an epub file to a json file.
 
+2. export-to-translation - create a translation file from json-file for the next translation
+   (via Google Translate, for example).
+3. todo: create import translation script
+
+4. translate-json-book-via-net - it uses Bing to translate, it modifies json-book.
+
+5. text-file-to-json-book
 
 ## See also
 
