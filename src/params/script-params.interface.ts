@@ -8,6 +8,6 @@ export interface IScriptParams {
     skipFirstEmptyParagraph: boolean,
     skipSecondEmptyParagraph: boolean,
     skipThirdEmptyParagraph: boolean,
-    epubFolder: string,
+    fileFolder: string,
     convertHtmlToTextOption: HtmlToTextOptions
 }

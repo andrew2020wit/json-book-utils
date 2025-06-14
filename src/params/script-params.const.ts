@@ -8,7 +8,7 @@ export const scriptParamsConst: IScriptParams = {
     skipFirstEmptyParagraph: false,
     skipSecondEmptyParagraph: false,
     skipThirdEmptyParagraph: false,
-    epubFolder: './files',
+    fileFolder: './json-book-files',
     convertHtmlToTextOption: {
         wordwrap: false,
         preserveNewlines: false

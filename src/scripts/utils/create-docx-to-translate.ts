@@ -6,12 +6,12 @@ import * as docx from "docx";
 
 // create docx-file for google-translate
 
-const bookIdOpenMarker = '[[[[';
-const bookIdCloseMarker = ']]]]';
-const lineIdOpenMarker = '[[[';
-const lineIdCloseMarker = ']]]';
-const lineIdOpenMarker2 = '(((';
-const lineIdCloseMarker2 = ')))';
+export const bookIdOpenMarker = '[[[[';
+export const bookIdCloseMarker = ']]]]';
+export const lineIdOpenMarker = '[[[';
+export const lineIdCloseMarker = ']]]';
+export const lineIdOpenMarker2 = '(((';
+export const lineIdCloseMarker2 = ')))';
 
 export function createDocx(jsonBook: IBookJson['book'], scriptParams: IScriptParams, fileNameWithoutExtension: string) {
     const docxChildren = [];
@@ -57,7 +57,7 @@ export function createDocx(jsonBook: IBookJson['book'], scriptParams: IScriptPar
 
     docx.Packer.toBuffer(docxDocument).then(
         (buffer: Buffer) => {
-            fs.writeFileSync(scriptParams.epubFolder + '/' + fileNameWithoutExtension + '.to-translate.docx', buffer);
+            fs.writeFileSync(scriptParams.fileFolder + '/' + fileNameWithoutExtension + '.to-translate.docx', buffer);
         },
         (err: Error) => console.error(err)
     );

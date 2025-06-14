@@ -3,8 +3,9 @@ import {scriptParamsConst} from "../params/script-params.const.js";
 import {IBook, IBookParagraph} from "../models/book.interface.js";
 import {textSplitSeparators} from "../const/text-split-separators.const.js";
 import {IBookJson} from "../models/book-json.interface.js";
+import {normalizeFileName} from "./utils/normalize-file-name.js";
 
-const files = fs.readdirSync(scriptParamsConst.epubFolder);
+const files = fs.readdirSync(scriptParamsConst.fileFolder);
 
 textFilesToJsonFile();
 
@@ -18,7 +19,7 @@ function textFilesToJsonFile(): void {
 
     const fileNameWithoutExtension = fileName.slice(0, -1 * '.txt'.length);
 
-    const textFileContent = fs.readFileSync(scriptParamsConst.epubFolder + '/' + fileName, 'utf8');
+    const textFileContent = fs.readFileSync(scriptParamsConst.fileFolder + '/' + fileName, 'utf8');
 
     if (!textFileContent) {
         throw new Error('wrong text file content.');
@@ -31,7 +32,9 @@ function textFilesToJsonFile(): void {
         jsonContentDescription: 'JSON Book',
     }
 
-    const jsonFilePath = scriptParamsConst.epubFolder + '/' + fileNameWithoutExtension + '.book.json'
+    const fileNameWithoutExtensionNormal = normalizeFileName(fileNameWithoutExtension);
+
+    const jsonFilePath = scriptParamsConst.fileFolder + '/' + fileNameWithoutExtensionNormal + '.book.json'
 
     fs.writeFileSync(jsonFilePath, JSON.stringify(jsonFileObj));
 }

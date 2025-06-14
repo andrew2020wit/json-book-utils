@@ -1,7 +1,7 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# See http://help.github.com/ignore-files/ for more about ignoring json-book-files.
 
-files/*
-!files/go.cmd
+json-book-files/*
+!json-book-files/go.cmd
 
 /dict
 /output
@@ -44,6 +44,6 @@ yarn-error.log
 testem.log
 /typings
 
-# System files
+# System json-book-files
 .DS_Store
 Thumbs.db

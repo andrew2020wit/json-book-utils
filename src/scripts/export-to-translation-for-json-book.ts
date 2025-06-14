@@ -3,11 +3,11 @@ import {scriptParamsConst} from "../params/script-params.const.js";
 import {IBookJson} from "../models/book-json.interface.js";
 import {createDocx} from "./utils/create-docx-to-translate.js";
 
-const dirContent = fs.readdirSync(scriptParamsConst.epubFolder);
+const dirContent = fs.readdirSync(scriptParamsConst.fileFolder);
 
 exportToTranslationForJsonBook();
 
-function exportToTranslationForJsonBook(): void {
+export function exportToTranslationForJsonBook(): void {
     const fileName = dirContent
         .filter(name => name.includes('.book.json'))?.[0];
 
@@ -15,7 +15,7 @@ function exportToTranslationForJsonBook(): void {
         throw new Error('File not found.');
     }
 
-    const jsonBook = JSON.parse(fs.readFileSync(scriptParamsConst.epubFolder + '/' + fileName, 'utf8')) as IBookJson;
+    const jsonBook = JSON.parse(fs.readFileSync(scriptParamsConst.fileFolder + '/' + fileName, 'utf8')) as IBookJson;
     const fileNameWithoutExtension = fileName.replace('.book.json', '');
 
     if (!jsonBook.book) {

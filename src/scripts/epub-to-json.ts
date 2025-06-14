@@ -5,8 +5,9 @@ import {IBookJson} from "../models/book-json.interface.ts";
 import {convert} from "html-to-text";
 import {textSplitSeparators} from "../const/text-split-separators.const.ts";
 import {scriptParamsConst} from "../params/script-params.const.js";
+import {normalizeFileName} from "./utils/normalize-file-name.js";
 
-const files = fs.readdirSync(scriptParamsConst.epubFolder);
+const files = fs.readdirSync(scriptParamsConst.fileFolder);
 
 await convertEpubFilesToJsonFile();
 
@@ -24,7 +25,7 @@ async function convertEpubFilesToJsonFile(): Promise<void> {
 async function convertEpubFileToJsonFile(fileName: string): Promise<void> {
     const fileNameWithoutExtension = fileName.slice(0, -1 * '.epub'.length);
 
-    const epub = new EPub(scriptParamsConst.epubFolder + '/' + fileName);
+    const epub = new EPub(scriptParamsConst.fileFolder + '/' + fileName);
 
     await new Promise<void>((resolve, reject) => {
         epub.on('end', () => resolve());
@@ -68,22 +69,9 @@ async function convertEpubFileToJsonFile(fileName: string): Promise<void> {
     jsonBook.content = bookContent;
     jsonBook.headers = bookHeaders;
 
-    const fileNameWithoutExtensionNormal = fileNameWithoutExtension.toLowerCase()
-        .replaceAll('  ', '-')
-        .replaceAll('\t', '-')
-        .replaceAll(' ', '-')
-        .replaceAll(',', '')
-        .replaceAll('!', '')
-        .replaceAll('?', '')
-        .replaceAll('"', '')
-        .replaceAll('`', '')
-        .replaceAll(`'`, '')
-        .replaceAll(':', '-')
-        .replaceAll('.', '')
-        .replaceAll('---', '-')
-        .replaceAll('--', '-');
+    const fileNameWithoutExtensionNormal = normalizeFileName(fileNameWithoutExtension);
 
-    fs.writeFileSync(scriptParamsConst.epubFolder + '/' + fileNameWithoutExtensionNormal + '.book.json', JSON.stringify({
+    fs.writeFileSync(scriptParamsConst.fileFolder + '/' + fileNameWithoutExtensionNormal + '.book.json', JSON.stringify({
         jsonContentDescription: "ForeignReaderBook",
         book: jsonBook
     }, null, 2));
