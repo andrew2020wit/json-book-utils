@@ -10,7 +10,7 @@ const files = fs.readdirSync(scriptParamsConst.epubFolder);
 
 await convertEpubFilesToJsonFile();
 
-async function convertEpubFilesToJsonFile() {
+async function convertEpubFilesToJsonFile(): Promise<void> {
     const fileName = files
         .filter(name => name.slice(-5) === '.epub')?.[0];
 
@@ -21,7 +21,7 @@ async function convertEpubFilesToJsonFile() {
     await convertEpubFileToJsonFile(fileName);
 }
 
-async function convertEpubFileToJsonFile(fileName: string) {
+async function convertEpubFileToJsonFile(fileName: string): Promise<void> {
     const fileNameWithoutExtension = fileName.slice(0, -1 * '.epub'.length);
 
     const epub = new EPub(scriptParamsConst.epubFolder + '/' + fileName);
@@ -89,12 +89,12 @@ async function convertEpubFileToJsonFile(fileName: string) {
     }, null, 2));
 }
 
-function convertHtmlToText(html: string) {
+function convertHtmlToText(html: string): string {
     return convert(html, scriptParamsConst.convertHtmlToTextOption);
 }
 
 // it fills bookContent and bookHeaders;
-function makeContentItem(chapter: EPub.TocElement, chapterHtml: string, bookContent: IBook['content'], bookHeaders: IBookHeader[]) {
+function makeContentItem(chapter: EPub.TocElement, chapterHtml: string, bookContent: IBook['content'], bookHeaders: IBookHeader[]): void {
     const chapterText = convertHtmlToText(chapterHtml);
 
     const lastContentIndex = bookContent.length - 1;

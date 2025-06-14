@@ -8,7 +8,7 @@ const files = fs.readdirSync(scriptParamsConst.epubFolder);
 
 textFilesToJsonFile();
 
-function textFilesToJsonFile() {
+function textFilesToJsonFile(): void {
     const fileName = files
         .filter(name => name.slice(-1 * '.txt'.length) === '.txt')?.[0];
 

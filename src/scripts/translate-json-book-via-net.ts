@@ -7,7 +7,7 @@ const dirContent = fs.readdirSync(scriptParamsConst.epubFolder);
 
 await translateJsonBookViaNet();
 
-async function translateJsonBookViaNet() {
+async function translateJsonBookViaNet(): Promise<void> {
     const fileName = dirContent
         .filter(name => name.includes('.book.json'))?.[0];
 
