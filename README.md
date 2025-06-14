@@ -14,7 +14,7 @@ see 'src/params/'
 
 ## scripts
 
-Each script can use param file from 'src/params/'
+Each script can use the param file from 'src/params/'
 
 Each script take only one file with certain extension (the first one);
 
