@@ -1,4 +1,4 @@
-# Convert epub-files to json-book files for Foreign Reader
+# Json book utils
 
 ## Json Book conception
 
