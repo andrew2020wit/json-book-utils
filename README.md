@@ -2,25 +2,29 @@
 
 ## Json Book conception
 
-A json book is mainly a text file, which can contain additional information.
+A json book is mainly a text file, which can contain additional information like headers.
+
+see /src/model/
 
 It's uses by [foreign-reader](https://github.com/andrew2020wit/foreign-reader) and my other private project.
 
-## Epub converter
+## Params
 
-## install
+see 'src/params/'
 
-- install node.js
-- run ```npm install``` in this folder
-- put files in the epub-files folder
-- run ```npm run epub-converter``` to create json-book without translation
-- or run ```npm run translate``` to create json-book with translation
-- or run ```npx tsx src/epub-converter.ts translateDocx translate translateDelayMs:100 translateFromLang:en translateToLang:ru```
-   (in project folder)
-- take json files from the epub-files folder
+## scripts
 
-It also creates docx files for translation.
+epub-to-json - convert an epub file to a json file.
 
-see also: [https://github.com/andrew2020wit/foreign-reader](https://github.com/andrew2020wit/foreign-reader)
+export-to-translation - create a translation file for the next translation.
+
+translate-json-book-via-net - it use Bing to translate
+
+
+## See also
+
+[https://github.com/andrew2020wit/foreign-reader](https://github.com/andrew2020wit/foreign-reader)
+
+## licence
 
 MIT licence
