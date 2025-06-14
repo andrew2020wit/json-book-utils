@@ -2,11 +2,11 @@ import fs from "node:fs";
 import {createDocx} from "./create-docx-to-translate.ts";
 import {translateJsonBook} from "./translate.js";
 import EPub from "epub";
-import {IBook, IBookHeader} from "./models/book.interface.ts";
-import {IBookJson} from "./models/book-json.interface.ts";
-import {IScriptParams} from "./script-params.interface.ts";
+import {IBook, IBookHeader} from "../models/book.interface.ts";
+import {IBookJson} from "../models/book-json.interface.ts";
 import {convert} from "html-to-text";
-import {textSplitSeparators} from "./const/text-split-separators.const.ts";
+import {textSplitSeparators} from "../const/text-split-separators.const.ts";
+import {scriptParamsConst} from "../params/script-params.const.js";
 
 const cmdLineParams = {
     translate: 'translate',
@@ -16,46 +16,29 @@ const cmdLineParams = {
     translateDelayMs: 'translateDelayMs:',
 };
 
-const scriptParams: IScriptParams = {
-    translate: false,
-    translateDocx: false,
-    translateFromLang: 'en',
-    translateToLang: 'ru',
-    translateDelayMs: 100,
-    skipAllEmptyParagraphs: false,
-    skipFirstEmptyParagraph: false,
-    skipSecondEmptyParagraph: false,
-    skipThirdEmptyParagraph: false,
-    epubFolder: './epub-files',
-    convertHtmlToTextOption: {
-        wordwrap: false,
-        preserveNewlines: false
-    }
-}
-
 await main();
 
 async function main() {
     const params = process.argv.slice(2);
 
-    scriptParams.translate = params.includes(cmdLineParams.translate);
-    scriptParams.translateDocx = params.includes(cmdLineParams.translateDocx);
+    scriptParamsConst.translate = params.includes(cmdLineParams.translate);
+    scriptParamsConst.translateDocx = params.includes(cmdLineParams.translateDocx);
 
     const translateFromLang = params.find(item => item.includes(cmdLineParams.translateFromLang))?.slice(cmdLineParams.translateFromLang.length);
     const translateToLang = params.find(item => item.includes(cmdLineParams.translateToLang))?.slice(cmdLineParams.translateToLang.length);
     const translateDelayMs = +(params.find(item => item.includes(cmdLineParams.translateDelayMs))?.slice(cmdLineParams.translateDelayMs.length) || 0);
 
-    if (translateFromLang) scriptParams.translateFromLang = translateFromLang;
-    if (translateToLang) scriptParams.translateToLang = translateToLang;
-    if (translateDelayMs) scriptParams.translateDelayMs = translateDelayMs;
+    if (translateFromLang) scriptParamsConst.translateFromLang = translateFromLang;
+    if (translateToLang) scriptParamsConst.translateToLang = translateToLang;
+    if (translateDelayMs) scriptParamsConst.translateDelayMs = translateDelayMs;
 
-    console.log(scriptParams);
+    console.log(scriptParamsConst);
 
     await convertEpubFilesToJsonFile();
 }
 
 async function convertEpubFilesToJsonFile() {
-    const dirContent = fs.readdirSync(scriptParams.epubFolder);
+    const dirContent = fs.readdirSync(scriptParamsConst.epubFolder);
 
     const fileNames = dirContent
         .filter(name => name.slice(-5) === '.epub');
@@ -68,7 +51,7 @@ async function convertEpubFilesToJsonFile() {
 async function convertEpubFileToJsonFile(fileName: string) {
     const fileNameWithoutExtension = fileName.slice(0, -1 * '.json'.length);
 
-    const epub = new EPub(scriptParams.epubFolder + '/' + fileName);
+    const epub = new EPub(scriptParamsConst.epubFolder + '/' + fileName);
 
     await new Promise<void>((resolve, reject) => {
         epub.on('end', () => resolve());
@@ -112,8 +95,8 @@ async function convertEpubFileToJsonFile(fileName: string) {
     jsonBook.content = bookContent;
     jsonBook.headers = bookHeaders;
 
-    if (scriptParams.translate) {
-        await translateJsonBook(jsonBook, scriptParams);
+    if (scriptParamsConst.translate) {
+        await translateJsonBook(jsonBook, scriptParamsConst);
     }
 
     const fileNameWithoutExtensionNormal = fileNameWithoutExtension.toLowerCase()
@@ -131,18 +114,18 @@ async function convertEpubFileToJsonFile(fileName: string) {
         .replaceAll('---', '-')
         .replaceAll('--', '-');
 
-    fs.writeFileSync(scriptParams.epubFolder + '/' + fileNameWithoutExtensionNormal + '.book.json', JSON.stringify({
+    fs.writeFileSync(scriptParamsConst.epubFolder + '/' + fileNameWithoutExtensionNormal + '.book.json', JSON.stringify({
         jsonContentDescription: "ForeignReaderBook",
         book: jsonBook
     }, null, 2));
 
-    if (scriptParams.translateDocx) {
-        createDocx(jsonBook, scriptParams, fileNameWithoutExtensionNormal);
+    if (scriptParamsConst.translateDocx) {
+        createDocx(jsonBook, scriptParamsConst, fileNameWithoutExtensionNormal);
     }
 }
 
 function convertHtmlToText(html: string) {
-    return convert(html, scriptParams.convertHtmlToTextOption);
+    return convert(html, scriptParamsConst.convertHtmlToTextOption);
 }
 
 // it fills bookContent and bookHeaders;
@@ -161,11 +144,11 @@ function makeContentItem(chapter: EPub.TocElement, chapterHtml: string, bookCont
                 return true;
             }
 
-            if (scriptParams.skipAllEmptyParagraphs) {
+            if (scriptParamsConst.skipAllEmptyParagraphs) {
                 return false;
             }
 
-            if (scriptParams.skipThirdEmptyParagraph
+            if (scriptParamsConst.skipThirdEmptyParagraph
                 && !notFilteredTextArr[index - 1]
                 && !notFilteredTextArr[index - 2]
                 && !!notFilteredTextArr[index - 3]
@@ -173,14 +156,14 @@ function makeContentItem(chapter: EPub.TocElement, chapterHtml: string, bookCont
                 return false;
             }
 
-            if (scriptParams.skipSecondEmptyParagraph
+            if (scriptParamsConst.skipSecondEmptyParagraph
                 && !notFilteredTextArr[index - 1]
                 && !!notFilteredTextArr[index - 2]
             ) {
                 return false;
             }
 
-            if (scriptParams.skipFirstEmptyParagraph
+            if (scriptParamsConst.skipFirstEmptyParagraph
                 && !!notFilteredTextArr[index - 1]
             ) {
                 return false;

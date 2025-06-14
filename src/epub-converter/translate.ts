@@ -1,7 +1,7 @@
 import {translate} from "bing-translate-api";
-import {IBook} from "./models/book.interface.ts";
-import {IScriptParams} from "./script-params.interface.ts";
-import {IBookJson} from "./models/book-json.interface.ts";
+import {IBook} from "../models/book.interface.ts";
+import {IScriptParams} from "../params/script-params.interface.ts";
+import {IBookJson} from "../models/book-json.interface.ts";
 
 export async function translateJsonBook(jsonBook: IBook, scriptParams: IScriptParams) {
     const translation: IBookJson['book']['translation'] = {};

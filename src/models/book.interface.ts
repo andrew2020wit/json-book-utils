@@ -18,36 +18,3 @@ export type IBookHeader = {
   isMarked?: boolean;
   text: string;
 };
-
-export interface IDBBookContent {
-  id: IBook['id'];
-  content: IBook['content'];
-}
-
-export interface IDBBookTranslation {
-  id: IBook['id'];
-  translation: IBook['translation'];
-}
-
-export interface IDBBookTitle {
-  id: IBook['id'];
-  title: IBook['title'];
-  description: IBook['description'];
-  lastOpenedTime: number;
-  currentContentItemId: number;
-}
-
-export interface IDBBookMarks {
-  id: IBook['id'];
-  markedItems: IBook['markedItems'];
-}
-
-export interface IDBBookHeaders {
-  id: IBook['id'];
-  headers: IBook['headers'];
-}
-
-export interface IDBTermsList {
-  id: 1,
-  terms: string[];
-}
