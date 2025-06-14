@@ -1,7 +1,7 @@
-import {IBookParagraph} from "../models/book.interface.js";
+import {IBookParagraph} from "../../models/book.interface.js";
 import fs from "node:fs";
-import {IBookJson} from "../models/book-json.interface.ts";
-import {IScriptParams} from "../params/script-params.interface.ts";
+import {IBookJson} from "../../models/book-json.interface.ts";
+import {IScriptParams} from "../../params/script-params.interface.ts";
 import * as docx from "docx";
 
 // create docx-file for google-translate
