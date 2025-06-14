@@ -1,12 +1,12 @@
 import fs from "node:fs";
-import {createDocx} from "./create-docx-to-translate.ts";
-import {translateJsonBook} from "./translate.js";
+import {translateJsonBook} from "../scripts/utils/translate-via-net.js";
 import EPub from "epub";
 import {IBook, IBookHeader} from "../models/book.interface.ts";
 import {IBookJson} from "../models/book-json.interface.ts";
 import {convert} from "html-to-text";
 import {textSplitSeparators} from "../const/text-split-separators.const.ts";
 import {scriptParamsConst} from "../params/script-params.const.js";
+import {createDocx} from "../scripts/utils/create-docx-to-translate.js";
 
 const cmdLineParams = {
     translate: 'translate',
