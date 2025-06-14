@@ -1,8 +1,6 @@
 import {IScriptParams} from "./script-params.interface.js";
 
 export const scriptParamsConst: IScriptParams = {
-    translate: false,
-    translateDocx: false,
     translateFromLang: 'en',
     translateToLang: 'ru',
     translateDelayMs: 100,
