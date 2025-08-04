@@ -7,7 +7,8 @@
     "epub-to-json": "npx tsx src/scripts/epub-to-json.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
     "translate-json-book-via-net": "npx tsx src/scripts/translate-json-book-via-net.ts",
     "text-to-json-book": "npx tsx src/scripts/text-file-to-json-book.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
-    "import-translation": "npx tsx src/scripts/import-translation.ts"
+    "import-translation": "npx tsx src/scripts/import-translation.ts",
+    "srt-to-json": "npx tsx src/scripts/srt/srt-to-json.ts"
   },
   "author": "Andrew Faurash",
   "license": "ISC",
@@ -21,7 +22,7 @@
     "html-to-text": "^9.0.5"
   },
   "devDependencies": {
-    "@types/node": "^22.4.1",
+    "@types/node": "^24.1.0",
     "tsx": "^4.19.1"
   }
 }
