@@ -48,6 +48,18 @@ function convertHtmlToText(html: string): string {
 }
 
 function srtToArray(srt: string): string[] {
-    return parseSrt(srt).map(x => x.text).filter(x => !!x)
+    const srtArr = parseSrt(srt);
+    const result: string[] = [];
+
+    for (let i = 0; i < srtArr.length; i++) {
+        if ( i % 20  === 0) {
+            const time = '============ T: ' + srtArr[i].time.slice(0, 5);
+            result.push(time);
+        }
+
+        result.push(srtArr[i].text);
+    }
+
+    return result.filter(x => !!x)
         .map(x => convertHtmlToText(x || ''));
 }
