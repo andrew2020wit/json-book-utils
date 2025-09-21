@@ -6,6 +6,7 @@
   "scripts": {
     "epub-to-json": "npx tsx src/scripts/epub-to-json.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
     "translate-json-book-via-net": "npx tsx src/scripts/translate-json-book-via-net.ts",
+    "epub-to-json-with-translation": "npx tsx src/scripts/epub-to-json.ts && npx tsx src/scripts/translate-json-book-via-net.ts",
     "text-to-json-book": "npx tsx src/scripts/text-file-to-json-book.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
     "import-translation": "npx tsx src/scripts/import-translation.ts",
     "srt-to-json": "npx tsx src/scripts/srt/srt-to-json.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts"

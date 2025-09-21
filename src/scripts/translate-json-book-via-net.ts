@@ -22,4 +22,6 @@ async function translateJsonBookViaNet(): Promise<void> {
     }
 
     await translateJsonBook(jsonBook.book, scriptParamsConst);
+
+    fs.writeFileSync(scriptParamsConst.fileFolder + '/' + 'with-tr-'  + fileName, JSON.stringify(jsonBook, null, 2));
 }
