@@ -12,14 +12,16 @@ const files = fs.readdirSync(scriptParamsConst.fileFolder);
 await convertEpubFilesToJsonFile();
 
 async function convertEpubFilesToJsonFile(): Promise<void> {
-    const fileName = files
-        .filter(name => name.slice(-5) === '.epub')?.[0];
+    const epubFiles = files
+        .filter(name => name.slice(-5) === '.epub');
 
-    if (!fileName) {
-        return;
+    if (!epubFiles?.length) {
+        throw( new Error(`No epub files found.`));
     }
 
-    await convertEpubFileToJsonFile(fileName);
+    for (const epubFile of epubFiles) {
+        await convertEpubFileToJsonFile(epubFile);
+    }
 }
 
 async function convertEpubFileToJsonFile(fileName: string): Promise<void> {
