@@ -25,6 +25,7 @@ async function convertEpubFilesToJsonFile(): Promise<void> {
 }
 
 async function convertEpubFileToJsonFile(fileName: string): Promise<void> {
+    console.log('start: ', fileName);
     const fileNameWithoutExtension = fileName.slice(0, -1 * '.epub'.length);
 
     const epub = new EPub(scriptParamsConst.fileFolder + '/' + fileName);
@@ -77,6 +78,8 @@ async function convertEpubFileToJsonFile(fileName: string): Promise<void> {
         jsonContentDescription: "ForeignReaderBook",
         book: jsonBook
     }, null, 2));
+
+    console.log('end: ', fileName);
 }
 
 function convertHtmlToText(html: string): string {
