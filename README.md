@@ -16,9 +16,9 @@ see 'src/params/'
 
 Each script can use the param file from 'src/params/'
 
-Each script take only one file with certain extension (the first one);
+Each script takes only one file with a certain extension (the first one);
 
-1. epub-to-json - convert an epub file to a json file.
+1. epub-to-json - convert an epub file to a JSON file.
 2. export-to-translation - create a translation file from json-file for the next translation
    (via Google Translate, for example).
 3. todo: create import translation script
