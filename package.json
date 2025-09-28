@@ -4,7 +4,8 @@
   "main": "",
   "homepage": "https://github.com/andrew2020wit/epub-to-json-for-fr",
   "scripts": {
-    "epub-to-json": "npx tsx src/scripts/epub-to-json.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
+    "epub-to-json": "npx tsx src/scripts/epub-to-json.ts",
+    "epub-to-json-with-tr-file": "npx tsx src/scripts/epub-to-json.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
     "translate-json-book-via-net": "npx tsx src/scripts/translate-json-book-via-net.ts",
     "epub-to-json-with-translation": "npx tsx src/scripts/epub-to-json.ts && npx tsx src/scripts/translate-json-book-via-net.ts",
     "text-to-json-book": "npx tsx src/scripts/text-file-to-json-book.ts && npx tsx src/scripts/export-to-translation-for-json-book.ts",
