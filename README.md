@@ -1,12 +1,12 @@
 # Json book utils
 
-## Json Book conception
+## JSON Book conception
 
-A json book is mainly a text file, which can contain additional information like headers.
+A JSON book is mainly a text file, which can contain additional information like headers.
 
 see /src/model/
 
-It's uses by [foreign-reader](https://github.com/andrew2020wit/foreign-reader) and my other private project.
+It's used by [foreign-reader](https://github.com/andrew2020wit/foreign-reader) and my other private project.
 
 ## Params
 
