@@ -1,0 +1,78 @@
+{
+  "jsonContentDescription": "ForeignReaderBook",
+  "book": {
+    "id": "book-id",
+    "title": "Example-json-book",
+    "content": [
+      {
+        "id": 0,
+        "text": [
+          "first line of first paragraph", "second line of first paragraph"
+        ]
+      },
+      {
+        "id": 1,
+        "text": [
+          "first line of second paragraph", "second line of second paragraph"
+        ]
+      },
+      {
+        "id": 5,
+        "text": [
+          "***"
+        ]
+      },
+      {
+        "id": 6,
+        "text": [
+          "Chapter 1",
+          "",
+          "It was a cold morning in London.",
+          "",
+          "42"
+        ]
+      },
+      {
+        "id": 7,
+        "text": [
+          "\"Where is Harry?\" asked Mrs. Dursley.",
+          "— I do not know, — said Tom.",
+          "“He went to the river,” Anna answered."
+        ]
+      },
+      {
+        "id": 8,
+        "text": [
+          "The old man who lived at the end of the",
+          "street had never once spoken to anyone.",
+          "He only nodded.",
+          "Sometimes,",
+          "very rarely, he smiled."
+        ]
+      },
+      {
+        "id": 9,
+        "text": [
+          "Thames",
+          "The river was quiet that night."
+        ]
+      }
+    ],
+    "translation": {
+      "0-0": "перший рядок першого абзацу",
+      "0-1": "другий рядок першого абзацу",
+      "1-0": "перший рядок другого абзацу",
+      "1-1": "другий рядок другого абзацу",
+      "6-0": "Розділ 1",
+      "6-2": "Був холодний ранок у London.",
+      "7-0": "\"Де Harry?\" запитала місіс Dursley.",
+      "7-1": "— Я не знаю, — сказав Tom.",
+      "7-2": "“Він пішов до річки,” відповіла Anna.",
+      "8-0": "Старий чоловік, який жив наприкінці вулиці, ніколи жодного разу не розмовляв ні з ким.",
+      "8-2": "Він лише кивав.",
+      "8-3": "Іноді,",
+      "8-4": "дуже рідко, він посміхався.",
+      "9-1": "Річка була тиха тієї ночі."
+    }
+  }
+}

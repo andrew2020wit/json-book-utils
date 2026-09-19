@@ -3,6 +3,9 @@
 json-book-files/*
 !json-book-files/go.cmd
 
+ai-translate-json-book/translated
+ai-translate-json-book/log.txt
+
 /dict
 /output
 /log.txt
